@@ -33,7 +33,6 @@ const Header = () => {
   signOut(auth).then(() => {
       navigate("/");
   }).catch((error) => {
-      navigate('/error')
   });
  }
 

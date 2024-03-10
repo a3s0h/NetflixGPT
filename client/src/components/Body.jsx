@@ -12,7 +12,6 @@ const Body = () => {
     {
       path : "/",
       element : <Register/>,
-      errorElement : <ErrorComponent/>
     },
     {
       path : "/browse",
