@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import appStore from '../utils/appStore';
+import { auth } from '../utils/firebase';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+// import store from "../utils/appStore"
 
 const Header = () => {
   const [showImage, setShowImage] = useState(true);
+  const user = useSelector(store => store.user);
+  const navigate = useNavigate();
+ 
 
-  useEffect(() => {
-    const handleResize = () => {
-      setShowImage(window.innerWidth >= 768); // Adjust the width as needed
-    };
+ const handleSignOut = () =>{
+  signOut(auth).then(() => {
+      navigate("/");
+  }).catch((error) => {
+    
+  });
+ }
 
-    // Initial check on component mount
-    handleResize();
-
-    // Listen for window resize events
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   return (
-    <div className="z-10 w-full absolute bg-gradient-to-b from-black">
+    <div className="flex justify-between z-10 w-full absolute bg-gradient-to-b from-black">
       <div className="w-full px-10">
         <img
           className="w-44 my-5"
@@ -30,6 +31,17 @@ const Header = () => {
           alt=""
         />
       </div>
+      {
+        user && 
+        <div className="flex items-center p-2">
+          <h3 className="font-bold text-white text-2xl px-4 border-b-2" >{user.displayName}</h3>
+        <img 
+          className="w-10 h-10"
+        src="https://cdn.icon-icons.com/icons2/2619/PNG/96/among_us_netflix_icon_156927.png" alt="" />
+        <button 
+          onClick={handleSignOut}
+        className="text-white font-bold ">(Sign Out)</button>
+      </div>}
     </div>
   );
 };

@@ -1,19 +1,24 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
 import { ValidateData } from '../utils/validateFormData';
-import { signInWithEmailAndPassword , createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword , createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase"
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 const Register = () => {
 
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+    const navigate = useNavigate();
 
-
-    // const name = useRef(null);
+    const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
+
+
+    const dispatch = useDispatch();
 
     const ToggleSignIn = () => {
         setIsSignIn(!isSignIn);
@@ -38,7 +43,21 @@ const Register = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
+                    // once sign in then update user profile 
+                    updateProfile(user, {
+                        displayName: name.current.value, photoURL: "https://cdn.icon-icons.com/icons2/2619/PNG/96/among_us_netflix_icon_156927.png"
+                      }).then(() => {
+                        // Profile updated!
+                        // ...
+                        const {uid , email , displayName} = user;
+                        dispatch(addUser({uid : uid , email:email , displayName : displayName}));
+                      }).catch((error) => {
+                        // An error occurred
+                        // ...
+                      });
+                      
                     console.log(user);
+                    navigate("/browse");
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -53,6 +72,7 @@ const Register = () => {
                     // Signed in 
                     const user = userCredential.user;
                     console.log(user);
+                    navigate("/browse");
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -79,7 +99,7 @@ const Register = () => {
                 {
                     !isSignIn &&
                     <input
-                        // ref={name}
+                        ref={name}
                         type='text'
                         placeholder='Enter name'
                         className="p-2 py-4 m-2 rounded-md bg-gray-700 w-full"
