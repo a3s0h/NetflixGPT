@@ -3,15 +3,14 @@ import Header from './Header'
 import { ValidateData } from '../utils/validateFormData';
 import { signInWithEmailAndPassword , createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase"
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { USER_AVATAR } from '../utils/constants';
 
 
 const Register = () => {
 
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
-    const navigate = useNavigate();
 
     const name = useRef(null);
     const email = useRef(null);
@@ -45,7 +44,8 @@ const Register = () => {
                     const user = userCredential.user;
                     // once sign in then update user profile 
                     updateProfile(user, {
-                        displayName: name.current.value, photoURL: "https://cdn.icon-icons.com/icons2/2619/PNG/96/among_us_netflix_icon_156927.png"
+                        displayName: name.current.value, 
+                        photoURL: USER_AVATAR
                       }).then(() => {
                         // Profile updated!
                         // ...
@@ -57,7 +57,6 @@ const Register = () => {
                       });
                       
                     console.log(user);
-                    navigate("/browse");
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -72,7 +71,6 @@ const Register = () => {
                     // Signed in 
                     const user = userCredential.user;
                     console.log(user);
-                    navigate("/browse");
                 })
                 .catch((error) => {
                     const errorCode = error.code;
