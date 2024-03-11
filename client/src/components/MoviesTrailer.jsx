@@ -11,12 +11,13 @@ if(movies === null)return;      // this is called early return if data is not be
 
 const movieFirstItem = movies?.nowPlaying[0];
 if (!movieFirstItem) return;
-console.log(movieFirstItem);
-const {title , overview} = movieFirstItem;
+
+console.log( "movies first : " , movieFirstItem);
+const {title , overview , id} = movieFirstItem;
 
   return (
-    <div className="pt-64 px-20 w-1/2">
-        <VideoPlay/>
+    <div className="relative overflow-x-hidden">
+        <VideoPlay moviesId={id}/>
         <VideoTitle title = {title} overview = {overview} />
     </div>
   )

@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
     <div className="flex justify-between z-10 w-full absolute bg-gradient-to-b from-black">
-      <div className="w-full px-10">
+      <div className=" px-10">
         <img
           className="w-44 my-5"
           src={LOGO}
@@ -48,8 +48,8 @@ const Header = () => {
       </div>
       {
         user && 
-        <div className="flex items-center p-2">
-          <h3 className="font-bold text-white text-2xl px-4 border-b-2" >{user.displayName}</h3>
+        <div className="flex items-center p-2 gap-2">
+          <h3 className="font-bold text-white text-2xl px-4 " >{user?.displayName}</h3>
         <img 
           className="w-10 h-10"
         src={USER_AVATAR} alt="" />

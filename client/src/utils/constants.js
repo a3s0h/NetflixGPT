@@ -1,6 +1,7 @@
 export const LOGO = "https://www.edigitalagency.com.au/wp-content/uploads/netflix-logo-png-large.png";
 
-export const USER_AVATAR = "https://cdn.icon-icons.com/icons2/2619/PNG/96/among_us_netflix_icon_156927.png";
+export const USER_AVATAR =
+  "https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e";
 
 
 
