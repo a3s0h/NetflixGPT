@@ -31,7 +31,7 @@ const Register = () => {
         //     nameValue = name.current.value;
         // }
         
-        console.log("hello");
+        // console.log("hello");
         const msg = ValidateData( email.current.value, password.current.value);
         setErrorMessage(msg);
 
@@ -56,7 +56,7 @@ const Register = () => {
                         // ...
                       });
                       
-                    console.log(user);
+                    // console.log(user);
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -70,7 +70,7 @@ const Register = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    console.log(user);
+                    // console.log(user);
                 })
                 .catch((error) => {
                     const errorCode = error.code;

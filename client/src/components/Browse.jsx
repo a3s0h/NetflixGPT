@@ -1,19 +1,27 @@
 import React, { useEffect } from 'react'
 import Header from './Header'
-import useMoviesList from '../hooks/useMoviesList'
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import MoviesTrailer from './MoviesTrailer';
-import MoviesPack from './MoviesPack';
+import MoviesListSection from './MoviesListSection';
+import useTopRatedMovies from '../hooks/useTopRatedMovies';
+import usePopularMovies from '../hooks/usePopularMovies';
+import useUpcomingMovies from '../hooks/useUpcomingMovies';
+import Footer from './Footer';
 
 
 const Browse = () => {
 
-   useMoviesList();
-  
+  useNowPlayingMovies();
+  useTopRatedMovies();
+  usePopularMovies();
+  useUpcomingMovies();
+
   return (
-    <div>
+    <div className="bg-black">
         <Header />
         <MoviesTrailer/>
-        <MoviesPack/>
+        <MoviesListSection/>
+        {/* <Footer/> */}
     </div>
   )
 }
