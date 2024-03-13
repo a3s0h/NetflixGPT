@@ -12,3 +12,16 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+@media (min-width: 730px) {
+    .login-register-form {
+        width: 400px;
+        height: fit-content;
+        padding : 2rem 34px ;
+        margin-top : 9rem;
+    }
+    .login-register-form  .form-title{
+        margin-top: 20px;
+    }
+    
+}

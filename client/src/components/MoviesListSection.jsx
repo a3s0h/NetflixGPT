@@ -13,7 +13,7 @@ const MoviesListSection = () => {
 
 // console.log("here data : ", moviesPlaying?.nowPlaying);
   return  (
-    <div className="bg-black h-auto">
+    <div className="bg-black h-auto  mt-10">
       <MoviesList title={"Now Playing"} data={nowPlayingMovies}/>
       <MoviesList title={"Top Rated"} data = {topRatedMovies} />
       <MoviesList title={"Popular"} data = {popularMovies} />

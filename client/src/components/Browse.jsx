@@ -21,7 +21,7 @@ const Browse = () => {
         <Header />
         <MoviesTrailer/>
         <MoviesListSection/>
-        {/* <Footer/> */}
+        <Footer/>
     </div>
   )
 }

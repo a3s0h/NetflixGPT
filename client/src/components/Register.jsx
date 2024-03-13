@@ -84,15 +84,17 @@ const Register = () => {
     return (
         <div className="">
             <Header />
-            <div className="absolute">
+            <div className="absolute w-screen ">
                 <img src="https://assets.nflxext.com/ffe/siteui/vlv3/93da5c27-be66-427c-8b72-5cb39d275279/94eb5ad7-10d8-4cca-bf45-ac52e0a052c0/IN-en-20240226-popsignuptwoweeks-perspective_alpha_website_large.jpg" alt="" />
             </div>
-            <form onSubmit={(e) => e.preventDefault()} className="absolute w-3/12 p-12 text-white  bg-black my-36 mx-auto left-0 right-0 bg-opacity-80 rounded-md">
+            <form onSubmit={(e) => e.preventDefault()} className="absolute login-register-form p-2 text-white h-screen bg-black  mx-auto left-0 right-0 bg-opacity-80 rounded-md ">
+                <div className="mt-20 form-title">
                 {
                     isSignIn ?
-                        <h1 className="text-3xl font-semibold py-5 px-2">Sign In</h1> :
-                        <h1 className="text-3xl font-semibold py-5 px-2">Sign Up</h1>
+                        <h1 className="text-2xl font-bold  py-5 sm:text-3xl">Sign In</h1> :
+                        <h1 className="text-2xl font-bold  py-5 sm:text-3xl">Sign Up</h1>
                 }
+                </div>
 
                 {
                     !isSignIn &&
@@ -100,7 +102,7 @@ const Register = () => {
                         ref={name}
                         type='text'
                         placeholder='Enter name'
-                        className="p-2 py-4 m-2 rounded-md bg-gray-700 w-full"
+                        className=" py-2 my-2 text-sm rounded-md bg-gray-700 w-full sm:py-4"
                     />
                 }
 
@@ -108,22 +110,22 @@ const Register = () => {
                     ref={email}
                     type="text"
                     placeholder="Email Address or Phone number"
-                    className="p-2 py-4 m-2 rounded-md bg-gray-700 w-full"
+                    className=" py-2 my-2 rounded-md bg-gray-700 w-full sm:py-4"
                 />
 
                 <input
                     ref={password}
                     type="password"
                     placeholder='Password'
-                    className="p-2 py-4 m-2 rounded-md bg-gray-700 w-full"
+                    className=" py-2 my-2 rounded-md bg-gray-700 w-full sm:py-4"
                 />
-                <p className="text-red-600 font-bold text-xl p-2 m-2">{errorMessage}</p>
-                <button className="p-2 py-4 m-2 mt-9 bg-red-600 rounded-lg w-full" onClick={handleValidation}>
+                <p className="text-red-600 font-bold text-sm p-2 m-2 sm:text-xl">{errorMessage}</p>
+                <button className=" py-2 my-1  bg-red-600 rounded-lg w-full sm:py-4" onClick={handleValidation}>
                     {isSignIn ? "Sign In" : "Sign Up"}
                 </button>
                 {
                     isSignIn ?
-                        <p className="p-2 m-2">New to Netflix? <span className="cursor-pointer" onClick={ToggleSignIn}>Sign Up</span></p> :
+                        <p className="my-2 text-sm sm:text-xl">New to Netflix? <span className="cursor-pointer" onClick={ToggleSignIn}>Sign Up</span></p> :
                         <p className="p-2 m-2">Already a user? <span className="cursor-pointer" onClick={ToggleSignIn}>Sign In</span></p>
                 }
 
